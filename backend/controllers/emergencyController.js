@@ -2,9 +2,7 @@ import EmergencyRequest from '../models/EmergencyRequest.js';
 import Hospital from '../models/Hospital.js';
 import Ambulance from '../models/Ambulance.js';
 
-// @desc    Trigger an SOS request
-// @route   POST /api/emergency/sos
-// @access  Private (Patient)
+
 export const triggerSOS = async (req, res) => {
   const { longitude, latitude, emergencyType } = req.body;
 
@@ -69,7 +67,7 @@ export const triggerSOS = async (req, res) => {
 
     // 4. Notify hospital and patient via Socket.io
     const reqPopulated = await EmergencyRequest.findById(emergencyRequest._id)
-      .populate('patient', 'name phone')
+      .populate('patient', 'name phone') // get actual data from the _id
       .populate('hospital', 'address location resources')
       .populate('ambulance', 'vehicleNumber location status');
 
@@ -99,9 +97,7 @@ export const triggerSOS = async (req, res) => {
   }
 };
 
-// @desc    Get emergency requests for a user/hospital/ambulance
-// @route   GET /api/emergency
-// @access  Private
+
 export const getEmergencies = async (req, res) => {
   try {
     const userRole = req.user.role;
@@ -132,9 +128,7 @@ export const getEmergencies = async (req, res) => {
   }
 };
 
-// @desc    Update emergency status
-// @route   PUT /api/emergency/:id/status
-// @access  Private
+
 export const updateEmergencyStatus = async (req, res) => {
   const { status } = req.body;
   try {

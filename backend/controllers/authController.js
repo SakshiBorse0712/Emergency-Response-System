@@ -3,9 +3,7 @@ import Hospital from '../models/Hospital.js';
 import Ambulance from '../models/Ambulance.js';
 import generateToken from '../utils/generateToken.js';
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
+
 export const registerUser = async (req, res) => {
   const { name, email, password, role, phone, extraData } = req.body;
 
@@ -65,9 +63,6 @@ export const registerUser = async (req, res) => {
   }
 };
 
-// @desc    Auth user & get token
-// @route   POST /api/auth/login
-// @access  Public
 export const authUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -92,9 +87,6 @@ export const authUser = async (req, res) => {
   }
 };
 
-// @desc    Get user profile
-// @route   GET /api/auth/profile
-// @access  Private
 export const getUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);

@@ -1,9 +1,6 @@
 import Hospital from '../models/Hospital.js';
 import Ambulance from '../models/Ambulance.js';
 
-// @desc    Update hospital resources
-// @route   PUT /api/resource/hospital
-// @access  Private (Hospital)
 export const updateHospitalResources = async (req, res) => {
   const { beds, icu, oxygen } = req.body;
 
@@ -25,9 +22,7 @@ export const updateHospitalResources = async (req, res) => {
   }
 };
 
-// @desc    Update ambulance status and location
-// @route   PUT /api/resource/ambulance
-// @access  Private (Ambulance)
+
 export const updateAmbulanceStatus = async (req, res) => {
   const { status, longitude, latitude } = req.body;
 
