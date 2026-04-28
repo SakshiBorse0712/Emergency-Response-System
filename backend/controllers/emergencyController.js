@@ -13,7 +13,7 @@ export const triggerSOS = async (req, res) => {
         $geoNear: {
           near: { type: 'Point', coordinates: [longitude, latitude] },
           distanceField: 'dist.calculated',
-          maxDistance: 50000, // 50km radius
+          maxDistance: 5000, // 5km radius
           query: { 'resources.beds': { $gt: 0 } },
           spherical: true,
         },
